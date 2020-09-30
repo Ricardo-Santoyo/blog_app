@@ -1,3 +1,14 @@
 <h1><%= @article.title %></h1>
-<p><%= @article.body %></p>
+<% if @article.title == "You will NOT believe what just happened!!" %>
+<div class="iframe-container">
+  <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" width="560" height="315" frameborder="0"></iframe>
+ </div>
+<% elsif @article.title == "Not Quite As Smooth Criminal" %>
+ <div class="iframe-container">
+  <iframe src="https://www.youtube.com/embed/jLvDnRU_ajk?autoplay=1" width="560" height="315" frameborder="0"></iframe>
+ </div>
+<% end %>
+<p><%= simple_format(@article.body) %></p>
 <%= link_to "Back to Articles List", articles_path %>
+<%= link_to "edit", edit_article_path(@article) %>
+<%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Do you really want to delete this Article?"} %>

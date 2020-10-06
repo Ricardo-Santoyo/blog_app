@@ -8,6 +8,12 @@
   <iframe src="https://www.youtube.com/embed/jLvDnRU_ajk?autoplay=1" width="560" height="315" frameborder="0"></iframe>
  </div>
 <% end %>
+<p>
+  Tags:
+  <% @article.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</p>
 <p><%= simple_format(@article.body) %></p>
 <h3>Comments (<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments %>
